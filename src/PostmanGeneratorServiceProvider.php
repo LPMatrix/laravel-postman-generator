@@ -40,7 +40,9 @@ class PostmanGeneratorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([
+                Commands\GeneratePostmanCollection::class,
+            ]);
         }
     }
 
@@ -53,8 +55,8 @@ class PostmanGeneratorServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'postman-generator');
 
         // Register the main class to use with the facade
-        $this->app->singleton('postman-generator', function () {
-            return new PostmanGenerator;
+        $this->app->singleton('postman-generator', function ($app) {
+            return new PostmanGenerator($app);
         });
     }
 }
