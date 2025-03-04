@@ -4,6 +4,7 @@ namespace LPMatrix\PostmanGenerator\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Str;
 
 class GeneratePostmanCollection extends Command
 {
